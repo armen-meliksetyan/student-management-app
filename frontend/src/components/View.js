@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Table from "react-bootstrap/Table";
 
 const View = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const View = () => {
         <div className="row">
           <div className="col-md-12">
             <h1>User Details</h1>
-            <table className="table">
+            <Table responsive>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -50,7 +51,7 @@ const View = () => {
                   <td>{user.password}</td>
                 </tr>
               </tbody>
-            </table>
+            </Table>
           </div>
         </div>
       </div>
