@@ -24,3 +24,4 @@ Route::get('users/{id}', [UserController::class, 'show']);
 Route::post('addnew', [UserController::class, 'store']); 
 Route::put('usersupdate/{id}', [UserController::class, 'update']);
 Route::delete('usersdelete/{id}', [UserController::class, 'destroy']);
+Route::get('usersearch/', 'PostsController@search')->name('search');

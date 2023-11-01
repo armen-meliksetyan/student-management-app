@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function SearchBar({ newData, data, setNewData }) {
   const [wordEntered, setWordEntered] = useState("");
@@ -7,12 +8,8 @@ function SearchBar({ newData, data, setNewData }) {
   };
 
   useEffect(() => {
-    newData = data;
-    setNewData(data);
-    const newFilter = newData.filter((value) => {
-      return value.name.toLowerCase().includes(wordEntered.toLowerCase());
-    });
-    setNewData(newFilter);
+    newData = axios.get('http://127.0.0.1:8000/api/usersearch')
+    console.log(newData)
   }, [wordEntered]);
 
   return (
@@ -20,7 +17,9 @@ function SearchBar({ newData, data, setNewData }) {
       <div className="col-md-6">
         <div className="form">
           <input
+            action="{{ route('usersearch') }}" method="GET"
             type="text"
+            name="search"
             placeholder="Search..."
             className="form-control form-input"
             value={wordEntered}

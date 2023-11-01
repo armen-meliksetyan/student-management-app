@@ -17,6 +17,17 @@ class UserController extends Controller
             'results' => $users
        ],200);
     }
+
+    public function search(Request $request)
+    {
+        $search = $request ->input('search');
+        $result = User::where('name', 'LIKE', "%{$search}%");
+
+        return response()->json([
+            'results' => $users
+       ],200);
+
+    }
    
     public function store(UserStoreRequest $request)
     {
